@@ -1,28 +1,55 @@
-import { useState } from 'react';
+import {
+  Button,
+  Input,
+  Form,
+  Dialog,
+} from 'antd-mobile';
+
+import { loginService } from '../../services/login';
+
 import './index.css';
 
+const initialValues = {
+  username: 'admin',
+  password: '12345',
+};
 
 const Login = () => {
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
-  const clickHandler = () => {
-    alert('Log in successfully!' + name + ',' + password) ;
-  }
-
-  const onChangeNameHandler = (e) => {
-    setName(e.target.value);
-  }
-
-  const onChangePasswordHandler = (e) => {
-    setPassword(e.target.value);
-  }
+  const [form] = Form.useForm();
+  const onSubmit = async () => {
+    const values = form.getFieldsValue();
+    const res = await loginService(values.username, values.password);
+    if (res && res.length > 0) {
+      Dialog.alert({
+        content: 'Login successfully',
+      });
+      return;
+    }
+    Dialog.alert({
+      content: 'Failed to login',
+    });
+  };
   return (
     <div className="login">
-        <div>Username: <input onChange={onChangeNameHandler} /> </div>
-        <div>Password: <input type="password" onChange={onChangePasswordHandler} /> </div>
-        <div><button onClick={clickHandler}>Log in</button></div>
+      <Form
+        form={form}
+        layout="horizontal"
+        model="card"
+        initialValues={initialValues}
+        footer={(
+          <Button block color="primary" onClick={onSubmit} size="large">
+            Log in
+          </Button>
+        )}
+      >
+        <Form.Item label="Username" name="username">
+          <Input placeholder="Please enter username" clearable />
+        </Form.Item>
+        <Form.Item label="Password" name="password">
+          <Input placeholder="Please enter password" clearabe type="password" />
+        </Form.Item>
+      </Form>
     </div>
   );
-}
-
+};
 export default Login;
