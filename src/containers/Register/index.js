@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Input } from 'antd-mobile';
+import Header from '@components/Header';
+import DatePickerInput from '@components/DatePickerInput';
 import style from './index.module.css';
-import Header from '../../components/Header';
-import DatePickerInput from '../../components/DatePickerInput';
 
 /**
  * register page
