@@ -10,7 +10,7 @@ root.render(
   <React.StrictMode>
     <Register />
     {/* <Login /> */}
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // start vconsole

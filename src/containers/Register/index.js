@@ -1,24 +1,24 @@
 import React from 'react';
-import style from'./index.module.css';
 import { Button, Input } from 'antd-mobile';
-import Header from '../../components/Header/';
+import style from './index.module.css';
+import Header from '../../components/Header';
 import DatePickerInput from '../../components/DatePickerInput';
 
 /**
  * register page
  */
-const Register = () => {
-  return (
+const Register = () => (
   <div>
     <Header />
     <div className={style.form}>
       <div className={style.formTitle}>Create your account</div>
-      <Input placeholder="Name" className={style.input}/>
-      <Input placeholder="Phone"className={style.input}/>
+      <Input placeholder="Name" className={style.input} />
+      <Input placeholder="Phone" className={style.input} />
       <div className={style.changeTypeButton}>Use email instead</div>
       <div className={style.dateOfBirth}>Date of birth</div>
-      <div className={style.privacyNotice}>This will not be shown publicly. Confirm your own age, 
-        even if this account is for a business, a pet, or something else. 
+      <div className={style.privacyNotice}>
+        This will not be shown publicly. Confirm your own age, even if this account
+        is for a business, a pet, or something else.
       </div>
       <DatePickerInput />
     </div>
@@ -26,7 +26,6 @@ const Register = () => {
       <Button shape="rounded" color="primary" className={style.footerButton}>Next</Button>
     </div>
   </div>
-  );
-};
+);
 
 export default Register;
