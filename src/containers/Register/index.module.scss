@@ -5,6 +5,16 @@
   margin: 0px 30px;
 }
 
+.formContainer {
+  :global(.adm-list-body) {
+    --adm-color-background: none;
+    border: none;
+  }
+  :global(.adm-list-item-content) {
+    border: none;
+  }
+}
+
 .formTitle {
   margin-top: 30px;
   font-size: 25px;

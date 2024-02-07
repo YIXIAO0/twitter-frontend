@@ -1,13 +1,44 @@
 import React from 'react';
+import { DatePicker } from 'antd-mobile';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 import style from './index.module.css';
 import calendarIcon from '../../assets/calendar.png';
 
-export default () => (
-  <div className={style.birthdayInput}>
-    <div className={style.birthdayInputTitle}>Date of birth</div>
-    <div>
-      <span className={style.birthdayInputValue}>mm/dd/yyyy</span>
-      <img className={style.calendarIcon} src={calendarIcon} alt="calendarIcon" />
-    </div>
-  </div>
-);
+const DatePickerInput = ({
+  value,
+  onChange,
+}) => {
+  const [visible, setVisible] = React.useState(false);
+  const onClickDatePicker = () => {
+    setVisible(true);
+  };
+  return (
+    <>
+      <DatePicker
+        visible={visible}
+        onClose={() => {
+          setVisible(false);
+        }}
+        precision="day"
+        onConfirm={(val) => {
+          onChange(val);
+        }}
+      />
+      <div className={style.birthdayInput} onClick={onClickDatePicker}>
+        <div className={style.birthdayInputTitle}>Date of birth</div>
+        <div>
+          <span className={style.birthdayInputValue}>{value ? moment(value).format('MM/DD/YYYY') : 'mm/dd/yyyy'}</span>
+          <img className={style.calendarIcon} src={calendarIcon} alt="calendarIcon" />
+        </div>
+      </div>
+    </>
+  );
+};
+
+DatePickerInput.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+export default DatePickerInput;
