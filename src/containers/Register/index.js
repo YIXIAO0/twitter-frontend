@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Input, Form } from 'antd-mobile';
+import { Button, Form } from 'antd-mobile';
 import Header from '@components/Header';
 import DatePickerInput from '@components/DatePickerInput';
+import TInput from '@components/TInput';
 import style from './index.module.scss';
 
 const ACCOUNT_TYPE = {
@@ -48,14 +49,14 @@ const Register = () => {
         <div className={style.formTitle}>Create your account</div>
         <Form form={form} initialValues={formData} className={style.formContainer}>
           <Form.Item name="name" rules={[{ required: true, message: 'Please input your name!' }]}>
-            <Input placeholder="Name" className={style.input} />
+            <TInput length={50} label="Name" />
           </Form.Item>
           {accountType === ACCOUNT_TYPE.TEL && (
           <Form.Item
             name="tel"
             rules={[{ required: true, message: 'Please input your phone!' }]}
           >
-            <Input placeholder="Phone" className={style.input} />
+            <TInput length={11} label="Phone" />
           </Form.Item>
           )}
           {accountType === ACCOUNT_TYPE.EMAIL && (
@@ -63,7 +64,7 @@ const Register = () => {
             name="email"
             rules={[{ required: true, message: 'Please input your email!' }]}
           >
-            <Input placeholder="Email" className={style.input} />
+            <TInput length={30} label="Email" />
           </Form.Item>
           )}
           <div className={style.changeTypeButton} onClick={onAccountTypeChange}>
