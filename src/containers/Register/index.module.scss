@@ -10,6 +10,14 @@
     --adm-color-background: none;
     border: none;
   }
+  :global(.adm-list-item) {
+    padding: 0;
+    margin: 0;
+  }
+  :global(.adm-list-item-content) {
+    padding: 0;
+    margin: 0;
+  }
   :global(.adm-list-item-content) {
     border: none;
   }
@@ -29,7 +37,7 @@
 }
 
 .input {
-  composes: input from '../../common.module.css';
+  composes: input from '../../common.module.scss';
 }
 
 .dateOfBirth {

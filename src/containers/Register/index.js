@@ -12,6 +12,7 @@ const ACCOUNT_TYPE = {
  * register page
  */
 const Register = () => {
+  const [form] = Form.useForm();
   const [formData] = React.useState({
     name: '',
     tel: '',
@@ -29,22 +30,39 @@ const Register = () => {
     setAccountType(ACCOUNT_TYPE.TEL);
   };
 
+  const onClickNextStep = async () => {
+    try {
+      await form.validateFields();
+      const data = form.getFieldsValue();
+      console.log(data);
+      // Proceed with your next step logic here
+    } catch (error) {
+      console.log('Validation failed', error);
+    }
+  };
+
   return (
     <div>
       <Header />
       <div className={style.form}>
         <div className={style.formTitle}>Create your account</div>
-        <Form initialValues={formData} className={style.formContainer}>
-          <Form.Item name="name">
+        <Form form={form} initialValues={formData} className={style.formContainer}>
+          <Form.Item name="name" rules={[{ required: true, message: 'Please input your name!' }]}>
             <Input placeholder="Name" className={style.input} />
           </Form.Item>
           {accountType === ACCOUNT_TYPE.TEL && (
-          <Form.Item name="tel">
+          <Form.Item
+            name="tel"
+            rules={[{ required: true, message: 'Please input your phone!' }]}
+          >
             <Input placeholder="Phone" className={style.input} />
           </Form.Item>
           )}
           {accountType === ACCOUNT_TYPE.EMAIL && (
-          <Form.Item name="email">
+          <Form.Item
+            name="email"
+            rules={[{ required: true, message: 'Please input your email!' }]}
+          >
             <Input placeholder="Email" className={style.input} />
           </Form.Item>
           )}
@@ -62,7 +80,7 @@ const Register = () => {
         </Form>
       </div>
       <div className={style.footer}>
-        <Button shape="rounded" color="primary" className={style.footerButton}>Next</Button>
+        <Button shape="rounded" color="primary" className={style.footerButton} onClick={onClickNextStep}>Next</Button>
       </div>
     </div>
   );

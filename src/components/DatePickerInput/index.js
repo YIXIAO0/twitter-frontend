@@ -2,7 +2,7 @@ import React from 'react';
 import { DatePicker } from 'antd-mobile';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import style from './index.module.css';
+import style from './index.module.scss';
 import calendarIcon from '../../assets/calendar.png';
 
 const DatePickerInput = ({
@@ -22,7 +22,7 @@ const DatePickerInput = ({
         }}
         precision="day"
         onConfirm={(val) => {
-          onChange(val);
+          onChange(moment(val).format('MM/DD/YYYY'));
         }}
       />
       <div className={style.birthdayInput} onClick={onClickDatePicker}>

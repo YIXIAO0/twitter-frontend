@@ -1,5 +1,7 @@
+@import '../../common.module.scss';
+
 .birthdayInput {
-  composes: input from '../../common.module.css'; 
+  composes: input from '../../common.module.scss'; 
   margin-top: 10px;
 }
 
@@ -9,7 +11,7 @@
 }
 
 .birthdayInputTitle {
-  color: tblue;
+  color: $tblue;
 }
 
 .birthdayInputValue {
