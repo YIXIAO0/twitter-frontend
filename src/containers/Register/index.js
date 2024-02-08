@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Form } from 'antd-mobile';
+import { Form } from 'antd-mobile';
 import Header from '@components/Header';
 import DatePickerInput from '@components/DatePickerInput';
 import TInput from '@components/TInput';
+import Footer from './components/Footer';
 import style from './index.module.scss';
 
 const ACCOUNT_TYPE = {
@@ -22,6 +23,7 @@ const Register = () => {
   });
 
   const [accountType, setAccountType] = React.useState(ACCOUNT_TYPE.TEL);
+  const [footerButtonDisabled, setFooterButtonDisabled] = React.useState(true);
 
   const onAccountTypeChange = () => {
     if (accountType === ACCOUNT_TYPE.TEL) {
@@ -33,12 +35,26 @@ const Register = () => {
 
   const onClickNextStep = async () => {
     try {
-      await form.validateFields();
-      const data = form.getFieldsValue();
-      console.log(data);
-      // Proceed with your next step logic here
+      const validate = await form.validateFields();
+      console.log(validate);
     } catch (error) {
-      console.log('Validation failed', error);
+      console.error('Validation failed:', error);
+    }
+  };
+
+  const onValuesChange = async () => {
+    try {
+      const validate = await form.validateFields();
+      if (validate) {
+        setFooterButtonDisabled(false);
+      }
+    } catch (error) {
+      if (error.errorFields.length === 0) {
+        setFooterButtonDisabled(false);
+        return;
+      }
+      setFooterButtonDisabled(true);
+      console.error('Validation failed:', error);
     }
   };
 
@@ -47,7 +63,12 @@ const Register = () => {
       <Header />
       <div className={style.form}>
         <div className={style.formTitle}>Create your account</div>
-        <Form form={form} initialValues={formData} className={style.formContainer}>
+        <Form
+          form={form}
+          initialValues={formData}
+          onValuesChange={onValuesChange}
+          className={style.formContainer}
+        >
           <Form.Item name="name" rules={[{ required: true, message: 'Please input your name!' }]}>
             <TInput length={50} label="Name" />
           </Form.Item>
@@ -67,9 +88,9 @@ const Register = () => {
             <TInput length={30} label="Email" />
           </Form.Item>
           )}
-          <div className={style.changeTypeButton} onClick={onAccountTypeChange}>
+          <span className={style.changeTypeButton} onClick={onAccountTypeChange}>
             {accountType === ACCOUNT_TYPE.TEL ? 'Change to email' : 'Change to phone'}
-          </div>
+          </span>
           <div className={style.dateOfBirth}>Date of birth</div>
           <div className={style.privacyNotice}>
             This will not be shown publicly. Confirm your own age, even if this account
@@ -80,9 +101,7 @@ const Register = () => {
           </Form.Item>
         </Form>
       </div>
-      <div className={style.footer}>
-        <Button shape="rounded" color="primary" className={style.footerButton} onClick={onClickNextStep}>Next</Button>
-      </div>
+      <Footer onClickNextStep={onClickNextStep} disabled={footerButtonDisabled} />
     </div>
   );
 };

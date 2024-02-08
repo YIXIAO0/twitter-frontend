@@ -15,6 +15,13 @@ const TInput = ({
   const [isFocused, setIsFocused] = React.useState(false);
   const [hide, setHide] = React.useState(false);
 
+  React.useEffect(() => {
+    if (value) {
+      setIsFocused(true);
+      setHide(true);
+    }
+  }, []);
+
   const onFocus = () => {
     setIsFocused(true);
     setHide(true);

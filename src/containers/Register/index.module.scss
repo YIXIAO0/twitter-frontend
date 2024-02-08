@@ -61,7 +61,15 @@
   text-align: center;
 }
 
-.footerButton {
+.footerButtonDisabled {
   margin: 0 auto;
   width: 80%;
+  background-color: #a7a7a7;
+  border-color: #a7a7a7;
+}
+
+.footerButton {
+  composes: footerButtonDisabled;
+  background-color: #000;
+  border-color: #000;
 }
