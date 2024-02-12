@@ -24,7 +24,8 @@
         "map": [
           ["@components", "./src/components"],
           ["@assets", "./src/assets"],
-          ["@containers", "./src/containers"]
+          ["@containers", "./src/containers"],
+          ["@services", "./src/services"]
         ]
       }
     }
