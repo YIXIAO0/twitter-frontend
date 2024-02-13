@@ -1,17 +1,74 @@
 {
   "user": [
     {
-      "username": "admin",
-      "password": "12345",
-      "age": "23",
-      "address": "Jian Jiangxi"
+      "password": "123",
+      "name": "yi",
+      "tel": "23554654754",
+      "birthday": "20000212",
+      "id": 1
     },
-
     {
-      "username": "zeyu",
-      "password": "12345",
-      "age": "25",
-      "address": "Shanghai"
+      "password": "123",
+      "username": "yi",
+      "tel": "123",
+      "birthday": "20000212",
+      "id": 2
+    },
+    {
+      "password": "123",
+      "username": "yi",
+      "tel": "123",
+      "birthday": "20000212",
+      "id": 3
+    },
+    {
+      "password": "123",
+      "username": "yi",
+      "tel": "123",
+      "birthday": "20000212",
+      "id": 4
+    },
+    {
+      "password": "123",
+      "username": "yi",
+      "tel": "123",
+      "birthday": "20000212",
+      "id": 5
+    },
+    {
+      "password": "123",
+      "username": "yi",
+      "tel": "123",
+      "birthday": "20000212",
+      "id": 6
+    },
+    {
+      "password": "123",
+      "username": "yi",
+      "tel": "123",
+      "birthday": "20000212",
+      "id": 7
+    },
+    {
+      "password": "1",
+      "username": "yi",
+      "tel": "32319841892",
+      "birthday": "20000212",
+      "id": 8
+    },
+    {
+      "password": "1",
+      "username": "yi",
+      "tel": "32319841892",
+      "birthday": "20000212",
+      "id": 9
+    },
+    {
+      "password": "1",
+      "username": "yi",
+      "tel": "12433514535",
+      "birthday": "20000212",
+      "id": 10
     }
   ]
 }

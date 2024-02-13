@@ -1,16 +1,18 @@
-import axios from "axios";
+import { Toast } from 'antd-mobile';
+import axios from 'axios';
 
 const domain = 'http://localhost:3333';
 
-// before port request, transfer params, and mainly add same domain 
+// before port request, transfer params, and mainly add same domain
 axios.interceptors.request.use((config) => ({
   ...config,
   url: domain + config.url,
 }));
 
 // for response, 做拦截, mainly has two parts: data extraction, and error handling
-axios.interceptors.response.use((response) => response.data, (err) => Promise.reject(err));
-
+axios.interceptors.response.use((response) => response.data, () => {
+  Toast.show('Failed to connect to server');
+});
 
 // get obtain service resource
 export const get = (url) => axios.get(url);
