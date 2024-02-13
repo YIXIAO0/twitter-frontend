@@ -7,3 +7,28 @@ $tblue: #1d9bf8;
   padding: 0px 10px;
   box-sizing: border-box;
 }
+
+.formContainer {
+  :global(.adm-list-body) {
+    --adm-color-background: none;
+    border: none;
+  }
+  :global(.adm-list-item) {
+    padding: 0;
+    margin: 0;
+  }
+  :global(.adm-list-item-content) {
+    padding: 0;
+    margin: 0;
+  }
+  :global(.adm-list-item-content) {
+    border: none;
+  }
+}
+
+.formTitle {
+  margin-top: 30px;
+  font-size: 25px;
+  font-weight: 700;
+  height: 68px;
+}

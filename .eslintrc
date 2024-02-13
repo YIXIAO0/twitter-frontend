@@ -24,6 +24,7 @@
         "map": [
           ["@components", "./src/components"],
           ["@assets", "./src/assets"],
+          ["@utils", "./src/utils"],
           ["@containers", "./src/containers"],
           ["@services", "./src/services"]
         ]
