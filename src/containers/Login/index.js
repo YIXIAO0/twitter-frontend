@@ -6,6 +6,7 @@ import {
 import React from 'react';
 import Header from '@components/Header';
 import TInput from '@components/TInput';
+import { Link } from 'react-router-dom';
 import { login } from '../../services/login';
 import style from './index.module.scss';
 
@@ -71,12 +72,11 @@ const Login = () => {
       </Form>
       <div className={style.goToRegister}>
         Do not have an account? &nbsp;
-        <a
-          href="/"
-          target="_blank"
+        <Link
+          to="/register"
         >
           Register
-        </a>
+        </Link>
       </div>
     </div>
   );

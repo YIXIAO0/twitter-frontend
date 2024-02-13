@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '@components/Header';
+// import Header from '@components/Header';
 import { Toast } from 'antd-mobile';
 import { registerUser } from '@services/register';
 import StepOne from './components/StepOne';
@@ -35,13 +35,12 @@ const Register = () => {
     console.log('>>>', res);
   };
 
-  const onClickClose = () => {
-    setStep(STEP.ONE);
-  };
+  // const onClickClose = () => {
+  //   setStep(STEP.ONE);
+  // };
 
   return (
     <div>
-      <Header onClickClose={onClickClose} />
       {step === STEP.ONE && <StepOne goToNextStepHandler={goToNextStepHandler} />}
       {step === STEP.TWO && (
       <StepTwo
